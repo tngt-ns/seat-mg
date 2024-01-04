@@ -1,25 +1,13 @@
-<!DOCTYPE html>
-<html lang="jp">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="description" content="" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href={{ url_for('static', filename='css/style.css') }}>
-    <script>
-      console.log("{{ isDisable }}");
-      var isDisable = Boolean(Number("{{ isDisable }}"));
-    </script>
-    <script src={{ url_for('static', filename='js/script.js') }}></script>
-    <title>Document</title>
-  </head>
-  <body>
+{% extends "base.html" %}
+{% block content %}
+
     <a href={{ url_for("visitor") }}>visitor</a>
     <a href={{ url_for("admin") }}>admin</a>
     <div id="seats">
-      <button class="seat" id="seat1" onclick="updateSeat(this)">1</button>
-      <button class="seat" id="seat2" onclick="updateSeat(this)">2</button>
-      <button class="seat" id="seat3" onclick="updateSeat(this)">3</button>
-      <button class="seat" id="seat4" onclick="updateSeat(this)">4</button>
+        <button class="seat" id="seat1" onclick="updateSeat(this)">1</button>
+        <button class="seat" id="seat2" onclick="updateSeat(this)">2</button>
+        <button class="seat" id="seat3" onclick="updateSeat(this)">3</button>
+        <button class="seat" id="seat4" onclick="updateSeat(this)">4</button>
     </div>
-  </body>
-</html>
+
+{% endblock %}
