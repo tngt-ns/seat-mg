@@ -1,13 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <a href={{ url_for("visitor") }}>visitor</a>
-    <a href={{ url_for("admin") }}>admin</a>
-    <div id="seats">
-        <button class="seat" id="seat1" onclick="updateSeat(this)">1</button>
-        <button class="seat" id="seat2" onclick="updateSeat(this)">2</button>
-        <button class="seat" id="seat3" onclick="updateSeat(this)">3</button>
-        <button class="seat" id="seat4" onclick="updateSeat(this)">4</button>
-    </div>
+    <a href={{ url_for("visitor") }}>座席利用状況はこちら</a>
+
+    <a href={{ url_for("admin") }}>管理者専用ページはこちら</a>
 
 {% endblock %}

@@ -6,9 +6,9 @@
     width: 300px;
     height: 300px;
     margin: 0 auto;
-  }
-  
-  .seat {
+}
+
+.seat {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -19,13 +19,12 @@
     font-size: 24px;
     font-weight: bold;
     color: white;
-  }
-  
-  .seat.available {
+}
+
+.seat.available {
     background-color: green;
-  }
-  
-  .seat.occupied {
+}
+
+.seat.occupied {
     background-color: red;
-  }
-  
+}

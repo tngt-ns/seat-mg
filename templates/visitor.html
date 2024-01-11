@@ -1,6 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <a href={{ url_for("index", isDisable=1) }}>座席利用状況はこちら</a>
+    <div id="seats">
+        {% for seat in seats %}
+            {% if seat.status == "available" %}
+                <button disabled class="seat available" id="seat{{ seat.id }}" >{{ seat.id + 1 }}</button>
+            {% else %}
+                <button disabled class="seat occupied" id="seat{{ seat.id }}" >{{ seat.id + 1 }}</button>
+            {% endif %}
+        {% endfor %}
+    </div>
 
 {% endblock %}
