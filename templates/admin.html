@@ -4,9 +4,13 @@
     <div id="seats">
         {% for seat in seats %}
             {% if seat.status == "available" %}
-                <button class="seat available" id="seat{{ seat.id }}" onclick=>{{ seat.id + 1 }}</button>
+                <form action="/admin" method="post">
+                    <button type="submit" method="post" name="seat_num" value="{{ seat.id }}" class="seat available" id="seat{{ seat.id }}" onclick="">{{ seat.id + 1 }}</button>
+                </form>
             {% else %}
-                <button class="seat occupied" id="seat{{ seat.id }}" onclick>{{ seat.id + 1 }}</button>
+                <form action="/admin" method="post">
+                    <button type="submit" method="post" name="seat_num" value="{{ seat.id }}" class="seat occupied" id="seat{{ seat.id }}">{{ seat.id + 1 }}</button>
+                </form>
             {% endif %}
         {% endfor %}
     </div>

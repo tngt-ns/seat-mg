@@ -21,10 +21,6 @@ class Seat(db.Model):
     status: Mapped[str] = mapped_column(String, nullable=False, default="available")
 
 
-# class Seat(db.Model):
-#     id: db.Column(db.Integer, primary_key=True)
-#     isAvailable: db.Column(db.Boolean, default=True)
-
 @app.route("/")
 def index():
     return render_template("index.html")
@@ -32,8 +28,17 @@ def index():
     
 @app.route("/admin", methods=["GET", "POST"])
 def admin():
+    seats = Seat.query.all()
     if request.method == "GET":
-        seats = Seat.query.all()
+        return render_template("admin.html", seats=seats)
+    else:
+        seat_num = request.form.get("seat_num")
+        target = Seat.query.filter_by(id=seat_num).first()
+        if target.status == "available":
+            target.status = "occupied"
+        else:
+            target.status = "available"
+        db.session.commit()
         return render_template("admin.html", seats=seats)
 
 @app.route("/visitor", methods=["GET", "POST"])
