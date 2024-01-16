@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import DeclarativeBase
 from sqlalchemy import Integer, String
@@ -24,22 +24,37 @@ class Seat(db.Model):
 @app.route("/")
 def index():
     return render_template("index.html")
+
+@app.route("/update_seat", methods=["POST"])
+def update_seat():
+    data = request.get_json()
+    seat_id = data.get('seat_id')
+
+    seat = Seat.query.get(seat_id)
+
+    if seat:
+        if seat.status == "available":
+            seat.status = "occupied"
+        else:
+            seat.status = "available"
+        db.session.commit()
+
+        return jsonify({'message': 'Seat status updated successfully'})
+    else:
+        return jsonify({'error': 'Invalid seat ID'}), 400
     
     
 @app.route("/admin", methods=["GET", "POST"])
 def admin():
     seats = Seat.query.all()
     if request.method == "GET":
-        return render_template("admin.html", seats=seats)
-    else:
-        seat_num = request.form.get("seat_num")
-        target = Seat.query.filter_by(id=seat_num).first()
-        if target.status == "available":
-            target.status = "occupied"
-        else:
-            target.status = "available"
-        db.session.commit()
-        return render_template("admin.html", seats=seats)
+        return render_template("admin.html", seats=seats)    
+
+@app.route("/get_seats", methods=["GET"])
+def get_seats():
+    seats = Seat.query.all()
+    seat_data = [{'id': seat.id, 'status': seat.status} for seat in seats]
+    return jsonify(seat_data)
 
 @app.route("/visitor", methods=["GET", "POST"])
 def visitor():
