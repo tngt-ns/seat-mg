@@ -1,0 +1,40 @@
+/* #seats {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+} */
+
+/* .seat {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+    border: 1px solid black;
+    margin: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+} */
+
+
+.seat-map-container {
+    position: relative;
+}
+
+.seat {
+    position: absolute;
+    border-radius: 50%;
+}
+
+.seat.available {
+    background-color: green;
+}
+
+.seat.occupied {
+    background-color: red;
+}
