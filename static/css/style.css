@@ -29,12 +29,22 @@
 .seat {
     position: absolute;
     border-radius: 50%;
+    border: none;
 }
 
 .seat.available {
-    background-color: green;
+    background-color: lightseagreen;
 }
 
 .seat.occupied {
-    background-color: red;
+    background-color: lightcoral;
+}
+
+/* img {
+    width: 800px;
+    height: 800px;
+} */
+
+body {
+    margin: 0;;
 }
