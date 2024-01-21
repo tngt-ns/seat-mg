@@ -69,7 +69,7 @@ window.onload = function () {
     let windowSize = Math.min(windowWidth, windowHeight);
     console.log(windowSize);
 
-    let scale = Math.min(containerWidth / windowSize, 0.7);
+    let scale = Math.min((0.7 * containerWidth) / windowSize, 0.7);
     console.log(scale);
     container.style.transform = "scale(" + scale + ")";
     container.style.transformOrigin = "top left";
