@@ -55,14 +55,24 @@ function updateSeats() {
 
 window.onload = function () {
     // 画像要素を取得
-    let container = document.getElementsByClassName("container")[0];
+    let container = document.querySelector(".seat-map-container");
+    console.log(container);
 
-    // 画面の横幅を取得
-    let width = window.innerWidth;
+    let style = window.getComputedStyle(container);
+    containerWidth = parseInt(style.width, 10);
+    console.log(containerWidth);
 
-    // 画面の横幅が400px以下の場合、画像のスケールを変更
-    if (width < 400) {
-        let scale = width / 400;
-        container.style.transform = "scale(" + 0.7 * scale + ")";
-    }
+    // 画面の幅を取得
+    let windowWidth = window.innerWidth;
+    let windowHeight = window.innerHeight;
+
+    let windowSize = Math.min(windowWidth, windowHeight);
+    console.log(windowSize);
+
+    let scale = containerWidth / windowSize;
+    console.log(scale);
+    container.style.transform = "scale(" + scale + ")";
+    container.style.transformOrigin = "top left";
+
+    console.log(style.transform);
 };
