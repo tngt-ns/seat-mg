@@ -21,6 +21,10 @@
     color: white;
 } */
 
+body {
+    transform: scale(0.5);
+    transform-origin: 0 0;
+}
 
 .seat-map-container {
     position: relative;
