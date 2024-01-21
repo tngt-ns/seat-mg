@@ -1,25 +1,22 @@
 window.onload = function () {
-    // 画像要素を取得
+    // 座席情報の取得
     let container = document.querySelector(".seat-map-container");
-    console.log(container);
-
-    let style = window.getComputedStyle(container);
-    containerWidth = parseInt(style.width, 10);
-    console.log(containerWidth);
 
     // 画面の幅を取得
+    let style = window.getComputedStyle(container);
+    containerWidth = parseInt(style.width, 10);
+
+    // 画面の幅と高さを取得
     let windowWidth = window.innerWidth;
     let windowHeight = window.innerHeight;
 
+    // 画面の縦横比を維持したまま、画面の短い方に合わせて拡大縮小
     let windowSize = Math.min(windowWidth, windowHeight);
-    console.log(windowSize);
 
+    // 画面の短い方に合わせて拡大縮小
     let scale = Math.min(containerWidth / windowSize, 0.6);
-    console.log(scale);
     container.style.transform = "scale(" + scale + ")";
     container.style.transformOrigin = "top left";
-
-    console.log(style.transform);
 };
 
 function updateSeatStatus(seatId) {
