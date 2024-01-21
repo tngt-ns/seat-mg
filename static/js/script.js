@@ -123,3 +123,11 @@ function resetSeatsStatus() {
 
     xhr.send();
 }
+
+function resetConfirm() {
+    if (confirm("本当にリセットしますか？")) {
+        resetSeatsStatus();
+    } else {
+        console.log("reset canceled");
+    }
+}
