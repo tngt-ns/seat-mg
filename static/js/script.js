@@ -17,7 +17,24 @@ window.onload = function () {
     let scale = Math.min(containerWidth / windowSize, 0.6);
     container.style.transform = "scale(" + scale + ")";
     container.style.transformOrigin = "top left";
+
+    showTime();
 };
+
+function showTime() {
+    let now = new Date();
+    let nowMonth = now.getMonth() + 1;
+    let nowDay = now.getDate();
+    let nowWeek = now.getDay()
+    let nowHour = now.getHours().toString();
+    let nowMinutes = now.getMinutes().toString();
+    let nowSeconds = now.getSeconds().toString();
+    const week_ja= new Array("日","月","火","水","木","金","土");
+
+    let text = nowMonth + "月" + nowDay + "日(" + week_ja[nowWeek] + ")" + nowHour.padStart(2, '0') + ":" + nowMinutes.padStart(2, '0') + ":" + nowSeconds.padStart(2, '0');
+
+    document.getElementById("time").innerHTML = text;
+}
 
 function updateSeatStatus(seatId) {
     let xhr = new XMLHttpRequest();

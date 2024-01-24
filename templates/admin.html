@@ -9,25 +9,6 @@
         style="position: relative; z-index: 1"
     />
 
-<<<<<<< HEAD
-        <!-- 色付きの要素 -->
-        <div class="seats">
-            {% for seat in seats %}
-                {% if seat.status == "available" %}
-                    <button type="button" class="seat available" id="seat{{ seat.id }}" style="{{ seat.button_pos }}" >{{ seat.id + 1 }}</button>
-                {% else %}
-                    <button type="button" class="seat occupied" id="seat{{ seat.id }}" style="{{ seat.button_pos }}">{{ seat.id + 1 }}</button>
-                {% endif %}
-            {% endfor %}
-        </div>
-
-        <!-- イメージマップ -->
-        <map name="seatMap">
-                {% for seat in seats %}
-                    <area class="seat" shape="circle" coords="{{ seat.area_pos }}" onclick="updateSeatStatus({{ seat.id }})">
-                {% endfor %}
-        </map>
-=======
     <!-- 色付きの要素 -->
     <div id="seats">
         {% for seat in seats %} {% if seat.status == "available" %}
@@ -49,7 +30,6 @@
             {{ seat.id + 1 }}
         </button>
         {% endif %} {% endfor %}
->>>>>>> main
     </div>
 
     <!-- イメージマップ -->
