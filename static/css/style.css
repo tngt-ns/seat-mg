@@ -1,35 +1,21 @@
-/* #seats {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    width: 300px;
-    height: 300px;
-    margin: 0 auto;
-} */
-
-/* .seat {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100px;
-    height: 100px;
-    border: 1px solid black;
-    margin: 10px;
-    font-size: 24px;
-    font-weight: bold;
-    color: white;
-} */
-
+img {
+    width: 100%;
+    height: auto;
+}
 
 .seat-map-container {
     position: relative;
+    height: 100vh;
 }
 
 .seat {
     position: absolute;
     border-radius: 50%;
     border: none;
+}
+
+.seats {
+    
 }
 
 .seat.available {
@@ -39,11 +25,6 @@
 .seat.occupied {
     background-color: lightcoral;
 }
-
-/* img {
-    width: 800px;
-    height: 800px;
-} */
 
 body {
     margin: 0;

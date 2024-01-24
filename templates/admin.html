@@ -6,7 +6,7 @@
         <img src="{{ url_for('static', filename='images/youth_station.png') }}" alt="Room Layout" usemap="#seatMap" style="position: relative; z-index: 1">
 
         <!-- 色付きの要素 -->
-        <div id="seats">
+        <div class="seats">
             {% for seat in seats %}
                 {% if seat.status == "available" %}
                     <button type="button" class="seat available" id="seat{{ seat.id }}" style="{{ seat.button_pos }}" >{{ seat.id + 1 }}</button>
