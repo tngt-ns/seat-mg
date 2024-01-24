@@ -1,29 +1,51 @@
-{% extends "base.html" %}
-{% block content %}
+{% extends "base.html" %} {% block content %}
 
-    <div class="seat-map-container">
-        <!-- 座席レイアウトの画像 -->
-        <img src="{{ url_for('static', filename='images/youth_station.png') }}" alt="Room Layout" usemap="#seatMap" style="position: relative; z-index: 1">
+<div class="seat-map-container">
+    <!-- 座席レイアウトの画像 -->
+    <img
+        src="{{ url_for('static', filename='images/youth_station.png') }}"
+        alt="Room Layout"
+        usemap="#seatMap"
+        style="position: relative; z-index: 1"
+    />
 
-        <!-- 色付きの要素 -->
-        <div id="seats">
-            {% for seat in seats %}
-                {% if seat.status == "available" %}
-                    <button disabled type="button" class="seat available" id="seat{{ seat.id }}" style="{{ seat.button_pos }}" ></button>
-                {% else %}
-                    <button disabled type="button" class="seat occupied" id="seat{{ seat.id }}" style="{{ seat.button_pos }}"></button>
-                {% endif %}
-            {% endfor %}
-        </div>
-
-        <!-- イメージマップ -->
-        <map name="seatMap">
-                {% for seat in seats %}
-                    <area class="seat" shape="circle" coords="{{ seat.area_pos }}">
-                {% endfor %}
-        </map>
+    <!-- 色付きの要素 -->
+    <div id="seats">
+        {% for seat in seats %} {% if seat.status == "available" %}
+        <button
+            disabled
+            type="button"
+            class="seat available"
+            id="seat{{ seat.id }}"
+            style="{{ seat.button_pos }}"
+        ></button>
+        {% else %}
+        <button
+            disabled
+            type="button"
+            class="seat occupied"
+            id="seat{{ seat.id }}"
+            style="{{ seat.button_pos }}"
+        ></button>
+        {% endif %} {% endfor %}
     </div>
 
-    <button type="button" class="btn btn-secondary" style="margin-left: 30px;" id="updateSeatsButton" onclick="updateSeats()">更新</button>
+    <!-- イメージマップ -->
+    <map name="seatMap">
+        {% for seat in seats %}
+        <area class="seat" shape="circle" coords="{{ seat.area_pos }}" />
+        {% endfor %}
+    </map>
+
+    <button
+        type="button"
+        class="btn btn-secondary"
+        style="margin-left: 30px"
+        id="updateSeatsButton"
+        onclick="updateSeats()"
+    >
+        更新
+    </button>
+</div>
 
 {% endblock %}
