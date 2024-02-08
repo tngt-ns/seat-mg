@@ -1,18 +1,21 @@
 window.onload = function () {
     const imgWidth = 800;
     let bodyWidth = document.body.clientWidth;
+    let bodyHeight = document.body.clientHeight;
     console.log("bodyWidth = " + bodyWidth);
+    console.log("bodyHeight = " + bodyHeight);
 
     let containerElement = document.getElementsByClassName('seat-map-container');
 
     if (containerElement) {
         // 座席情報の取得
         let container = document.querySelector(".seat-map-container");
+        let bodyMinSize = Math.min(bodyWidth, bodyHeight);
 
-        if (bodyWidth > imgWidth) {
+        if (bodyMinSize > imgWidth) {
             container.style.width = imgWidth + "px";
         } else {
-            let scale = bodyWidth / imgWidth;
+            let scale = bodyMinSize / imgWidth;
             container.style.transformOrigin = "top left";
             container.style.transform = "scale(" + scale + ")";
         }
