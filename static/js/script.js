@@ -1,24 +1,27 @@
 window.onload = function () {
-    // 座席情報の取得
-    let container = document.querySelector(".seat-map-container");
+    const imgWidth = 800;
+    let bodyWidth = document.body.clientWidth;
+    console.log("bodyWidth = " + bodyWidth);
 
-    // 画面の幅を取得
-    let style = window.getComputedStyle(container);
-    containerWidth = parseInt(style.width, 10);
+    let containerElement = document.getElementsByClassName('seat-map-container');
 
-    // 画面の幅と高さを取得
-    let windowWidth = window.innerWidth;
-    let windowHeight = window.innerHeight;
+    if (containerElement) {
+        // 座席情報の取得
+        let container = document.querySelector(".seat-map-container");
 
-    // 画面の縦横比を維持したまま、画面の短い方に合わせて拡大縮小
-    let windowSize = Math.min(windowWidth, windowHeight);
+        if (bodyWidth > imgWidth) {
+            container.style.width = imgWidth + "px";
+        } else {
+            let scale = bodyWidth / imgWidth;
+            container.style.transformOrigin = "top left";
+            container.style.transform = "scale(" + scale + ")";
+        }
+    }
 
-    // 画面の短い方に合わせて拡大縮小
-    let scale = Math.min(containerWidth / windowSize, 0.6);
-    container.style.transform = "scale(" + scale + ")";
-    container.style.transformOrigin = "top left";
-
-    showTime();
+    let timeElement = document.getElementById("time");
+    if (timeElement) {
+        showTime();
+    }
 };
 
 function showTime() {

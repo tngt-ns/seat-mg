@@ -1,5 +1,6 @@
 {% extends "base.html" %} {% block content %}
-<p class="time"><span id="time"></span> の座席状況</p>
+
+<p class="date-time"><span id="time"></span> の座席状況</p>
 
 <div class="seat-map-container">
     <!-- 座席レイアウトの画像 -->
@@ -7,8 +8,14 @@
         src="{{ url_for('static', filename='images/youth_station.png') }}"
         alt="Room Layout"
         usemap="#seatMap"
-        style="position: relative; z-index: 1"
     />
+
+    <!-- イメージマップ -->
+    <map name="seatMap">
+        {% for seat in seats %}
+        <area class="seat" shape="circle" coords="{{ seat.area_pos }}" />
+        {% endfor %}
+    </map>
 
     <!-- 色付きの要素 -->
     <div id="seats">
@@ -30,13 +37,6 @@
         ></button>
         {% endif %} {% endfor %}
     </div>
-
-    <!-- イメージマップ -->
-    <map name="seatMap">
-        {% for seat in seats %}
-        <area class="seat" shape="circle" coords="{{ seat.area_pos }}" />
-        {% endfor %}
-    </map>
 
     <button
         type="button"
