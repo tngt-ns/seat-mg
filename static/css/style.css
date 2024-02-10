@@ -12,6 +12,19 @@ body {
     color: #333;
 }
 
+h1 {
+    margin:10px;
+    font-weight: bold;
+}
+
+a {
+    text-decoration: none;
+}
+
+span {
+    color:#333;
+}
+
 .date-time {
     margin:10px 0 10px 10px;
 }
