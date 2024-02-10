@@ -11,14 +11,14 @@ window.onload = function () {
         // 座席情報の取得
         let container = document.querySelector(".seat-map-container");
         let bodyMinSize = Math.min(bodyWidth, bodyHeight);
+        let scale = 0.6;
 
-        if (bodyMinSize > imgWidth) {
-            container.style.width = imgWidth + "px";
-        } else {
-            let scale = bodyMinSize / imgWidth;
-            container.style.transformOrigin = "top left";
-            container.style.transform = "scale(" + scale + ")";
+        if (bodyMinSize < imgWidth) {
+            scale = bodyMinSize / imgWidth;
         }
+
+        container.style.transformOrigin = "top left";
+        container.style.transform = "scale(" + scale + ")";
     }
 
     let timeElement = document.getElementById("time");
