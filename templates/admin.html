@@ -1,5 +1,16 @@
 {% extends "base.html" %} {% block content %}
 
+<ul class="seat-status-guide">
+    <li class="seat-status-guide-item">
+        <i class="far fa-check-circle available"></i>
+        <span>空席</span>
+    </li>
+    <li class="seat-status-guide-item">
+        <i class="far fa-times-circle occupied"></i>
+        <span>使用中</span>
+    </li>
+</ul>
+
 <div class="seat-map-container">
     <!-- 座席レイアウトの画像 -->
     <img
